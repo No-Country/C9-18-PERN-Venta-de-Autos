@@ -16,8 +16,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "prepare": "husky install"
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
@@ -31,17 +30,7 @@
     "sequelize-cli": "^6.5.2"
   },
   "devDependencies": {
-    "eslint": "^8.32.0",
-    "husky": "^8.0.0",
-    "lint-staged": "^13.1.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20",
-    "prettier": "^2.8.3"
-  },
-  "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "eslint"
-    ]
+    "nodemon": "^2.0.20"
   }
 }
