@@ -1,16 +1,19 @@
 const createHttpError = require('http-errors');
 const { endpointResponse } = require('../helpers/success');
 const { catchAsync } = require('../helpers/catchAsync');
+const CarServices = require('../services/cars.services');
 
 // example of a controller. First call the service, then build the controller method
 module.exports = {
-  get: catchAsync(async (req, res, next) => {
+  post: catchAsync(async (req, res, next) => {
     try {
-      const response = 'prueba';
+      const newCar = req.body;
+      const result = await CarServices.addVehicle(newCar);
       endpointResponse({
         res,
-        message: 'Test retrieved successfully',
-        body: response,
+        message: 'Car added successfully',
+        body: result,
+        code: 201 // en este caso es 201 porque es un post, se debe cambiar según el tipo de petición
       });
     } catch (error) {
       const httpError = createHttpError(

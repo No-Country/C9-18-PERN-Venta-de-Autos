@@ -1,9 +1,9 @@
 const express = require('express');
-const { get } = require('../controllers/index');
+const { post } = require('../controllers/car.controller');
 
 const router = express.Router();
 
 // example of a route with index controller get function
-router.get('/', get);
+router.post('/publish', post);
 
 module.exports = router;
