@@ -83,7 +83,7 @@ module.exports = (sequelize) => {
       seller_id: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'User',
+          model: 'user',
           key: 'id',
         },
         allowNull: false,
