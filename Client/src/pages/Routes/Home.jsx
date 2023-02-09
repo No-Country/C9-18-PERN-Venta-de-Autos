@@ -3,7 +3,7 @@ import React from 'react';
 const Home = () => {
   return (
     <div className='Home'>
-      <h1>page Home</h1>
+      <h1 style={{margin: '130px'}}>page Home</h1>
     </div>
   );
 };
