@@ -111,6 +111,9 @@ const Cars = db.define("cars", {
         ],
         allowNull: false,
       },
+      images: {
+        type: DataTypes.STRING
+      }
 });
 
 module.exports = Cars;

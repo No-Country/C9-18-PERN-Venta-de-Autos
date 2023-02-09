@@ -16,7 +16,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "seed": "node ./seeders/seeders.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",
