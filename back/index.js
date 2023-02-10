@@ -27,7 +27,7 @@ const db = require("./utils/database");
 db.authenticate()
   .then(() => console.log("Authentication successful"))
   .catch((error) => console.log(error));
-db.sync({force: true})
+db.sync({force: false})
   .then(() => {
     console.log("Database synchronized");
     app.listen(app.get('port'), () => {

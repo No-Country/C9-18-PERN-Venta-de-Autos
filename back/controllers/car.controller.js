@@ -13,7 +13,7 @@ module.exports = {
         res,
         message: 'Car added successfully',
         body: result,
-        code: 201 // en este caso es 201 porque es un post, se debe cambiar según el tipo de petición
+        code: 201 
       });
     } catch (error) {
       const httpError = createHttpError(
@@ -23,4 +23,21 @@ module.exports = {
       next(httpError);
     }
   }),
+  get: catchAsync(async (req, res, next) => {
+    try {
+      const result = await CarServices.getVehicles();
+      endpointResponse({
+        res,
+        message: 'Car added successfully',
+        body: result,
+        code: 200
+      })
+    } catch (error) {
+      const httpError = createHttpError(
+        error.statusCode,
+        `[Error retrieving index] - [index - GET]: ${error.message}`
+      );
+      next(httpError);
+    }
+  })
 };

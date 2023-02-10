@@ -5,12 +5,7 @@ const Users = require("../models/users.model");
 class CarServices {
     static async getVehicles() {
         try {
-            const allCars = await Cars.findAll({
-                include: {
-                    model: Users,
-                    attributes: ["fristName", "lastName"]
-                }
-            });
+            const allCars = await Cars.findAll();
             return allCars;
         } catch (error) {
             throw error;
