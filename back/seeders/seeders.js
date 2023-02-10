@@ -1,6 +1,7 @@
 const initModels = require("../models/initModels");
 const Cars = require("../models/cars.model");
 const db = require("../utils/database");
+const Users = require("../models/users.model");
 
 initModels();
 
@@ -204,8 +205,21 @@ const cars = [
   },
 ];
 
-db.sync({force: true}).then(() => {
-    console.log("Seeding...");
-    cars.forEach((car) => Cars.create(car));
-    console.log("Seed planted ;)")
+const users = [
+  {
+    fristName: "Anselmo",
+    lastName: "Riquelme",
+    email: "anselmoriquelme@gmail.com",
+    phone: "1234567890",
+    password: "1234",
+  },
+];
+
+db.sync({ force: true }).then(() => {
+  console.log("Seeding...");
+  cars.forEach(async (car) => await Cars.create(car));
+  console.log("Seed planted ;)");
+  setTimeout(() => {
+    users.forEach(async (user) => await Users.create(user));
+  }, 100);
 });

@@ -57,5 +57,23 @@ module.exports = {
       );
       next(httpError);
     }
+  }),
+  updateVehicles: catchAsync(async (req, res, next) => {
+    try {
+      const {id} = req.params;
+      const newInfo = req.body;
+      const result = await CarServices.updateVehicle(id, newInfo);
+      endpointResponse({
+        res,
+        message: "Vehicle was updated successfully",
+        code: 200
+      })
+    } catch (error) {
+      const httpError = createHttpError(
+        error.statusCode,
+        `[Error retreiving index] - [index - GET]: ${error.message}`
+      );
+      next(httpError);
+    }
   })
 };

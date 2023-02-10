@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const Cars = require("../models/cars.model");
 const Users = require("../models/users.model");
 
@@ -24,6 +25,16 @@ class CarServices {
     static async addVehicle(newCar) {
         try {
             const result = Cars.create(newCar);
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    }
+    static async updateVehicle(id, newInfo) {
+        try {
+            const result = await Cars.update(
+                newInfo, {where: { id }}
+            );
             return result;
         } catch (error) {
             throw error;
