@@ -11,6 +11,16 @@ class CarServices {
             throw error;
         }
     }
+    static async getBySellerId(seller_id) {
+        try {
+            const result = await Cars.findAll({
+                where: {seller_id: seller_id}
+            });
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    }
     static async addVehicle(newCar) {
         try {
             const result = Cars.create(newCar);

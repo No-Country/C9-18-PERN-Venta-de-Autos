@@ -28,7 +28,7 @@ module.exports = {
       const result = await CarServices.getVehicles();
       endpointResponse({
         res,
-        message: 'Car added successfully',
+        message: 'Vehicles listed successfully',
         body: result,
         code: 200
       })
@@ -36,6 +36,24 @@ module.exports = {
       const httpError = createHttpError(
         error.statusCode,
         `[Error retrieving index] - [index - GET]: ${error.message}`
+      );
+      next(httpError);
+    }
+  }),
+  getVehiclesBySellerId: catchAsync(async (req, res, next) => {
+    try {
+      const {seller_id} = req.params;
+      const result = await CarServices.getBySellerId(seller_id);
+      endpointResponse({
+        res, 
+        message: "Vehicles listed successfully",
+        body: result,
+        code: 200
+      })
+    } catch (error) {
+      const httpError = createHttpError(
+        error.statusCode,
+        `[Error retreiving index] - [index - GET]: ${error.message}`
       );
       next(httpError);
     }
