@@ -40,6 +40,16 @@ class CarServices {
             throw error;
         }
     }
+    static async deleteCar(id) {
+        try {
+            const result = Cars.destroy({
+                where: { id }
+            });
+            return result;
+        } catch (error) {
+            throw (error);
+        }
+    }
 };
 
 module.exports = CarServices;

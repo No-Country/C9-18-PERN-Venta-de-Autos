@@ -18,7 +18,7 @@ module.exports = {
     } catch (error) {
       const httpError = createHttpError(
         error.statusCode,
-        `[Error retrieving index] - [index - GET]: ${error.message}`
+        `[Error retrieving index] - [index - POST]: ${error.message}`
       );
       next(httpError);
     }
@@ -65,13 +65,30 @@ module.exports = {
       const result = await CarServices.updateVehicle(id, newInfo);
       endpointResponse({
         res,
-        message: "Vehicle was updated successfully",
+        message: "Vehicle updated successfully",
         code: 200
       })
     } catch (error) {
       const httpError = createHttpError(
         error.statusCode,
-        `[Error retreiving index] - [index - GET]: ${error.message}`
+        `[Error retreiving index] - [index - PATCH]: ${error.message}`
+      );
+      next(httpError);
+    }
+  }),
+  deleteVehicles: catchAsync(async (req, res, next) => {
+    try {
+      const {id} = req.params;
+      const result = await CarServices.deleteCar(id);
+      endpointResponse({
+        res,
+        message: "Vehicle removed successfully",
+        code: 200
+      });
+    } catch (error) {
+      const httpError = createHttpError(
+        error.statusCode,
+        `[Error retreiving index] - [index - DELETE]: ${error.message}`
       );
       next(httpError);
     }
