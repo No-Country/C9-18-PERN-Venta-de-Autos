@@ -1,11 +1,12 @@
-const express = require('express');
+const express = require("express");
+const { login } = require("../controllers/auth.controller");
 const {
   register,
   getAll,
   getId,
   update,
   deleteUser,
-} = require('../controllers/user.controller');
+} = require("../controllers/user.controller");
 
 const router = express.Router();
 
@@ -26,14 +27,16 @@ const router = express.Router();
  * 
  */
 
-router.post('/register', register);
+router.post("/register", register);
 
-router.get('/all', getAll);
+router.post("/login", login);
 
-router.get('/:id', getId);
+router.get("/all", getAll);
 
-router.put('/edit/:id', update);
+router.get("/:id", getId);
 
-router.delete('/delete/:id', deleteUser);
+router.put("/edit/:id", update);
+
+router.delete("/delete/:id", deleteUser);
 
 module.exports = router;
