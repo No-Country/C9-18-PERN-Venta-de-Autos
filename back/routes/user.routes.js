@@ -5,6 +5,7 @@ const {
   getId,
   update,
   deleteUser,
+  verifyUser
 } = require('../controllers/user.controller');
 
 const router = express.Router();
@@ -35,5 +36,7 @@ router.get('/:id', getId);
 router.put('/edit/:id', update);
 
 router.delete('/delete/:id', deleteUser);
+
+router.post('/verify', verifyUser)
 
 module.exports = router;

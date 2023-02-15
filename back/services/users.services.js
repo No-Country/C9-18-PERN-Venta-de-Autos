@@ -1,5 +1,7 @@
 const { encryptPassword, createJwt } = require('../helpers');
+const {ErrorObject}=require('../helpers/error')
 const Users = require('../models/users.model');
+const crypto =require ("crypto");
 
 class UserServices {
   static async registerUser(body) {
@@ -16,9 +18,14 @@ class UserServices {
         throw new Error('Las contraseñas no coinciden');
       }
 
+      const verificationToken = crypto.randomBytes(40).toString("hex");
+
+
       user = new Users(body);
       // Encriptar password
       user.password = await encryptPassword(password);
+
+      user.verificationToken=verificationToken;
 
       await user.save();
 

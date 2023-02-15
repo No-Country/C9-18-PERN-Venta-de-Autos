@@ -100,4 +100,16 @@ module.exports = {
       next(httpError);
     }
   }),
+
+  verifyUser: catchAsync(async(req, res, next)=>{
+    try{
+
+    }catch(error){
+      const httpError = createHttpError(
+        error.statusCode,
+        `[Error retrieving index] - [index - GET]: ${error.message}`
+      );
+      next(httpError);
+    }
+  })
 };
