@@ -37,6 +37,6 @@ router.put('/edit/:id', update);
 
 router.delete('/delete/:id', deleteUser);
 
-router.post('/verify', verifyUser)
+router.get('/verify', verifyUser)
 
 module.exports = router;
