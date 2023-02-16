@@ -1,4 +1,5 @@
 const sendEmail = require("./sendMail");
+const plantilla = require ("./plantilla")
 
 const sendVerificationEmail = async ({
   name,
@@ -6,20 +7,17 @@ const sendVerificationEmail = async ({
   verificationToken,
   origin,
 }) => {
+  try{
   const verifyEmail = `${origin}/users/verify?token=${verificationToken}&email=${email}`;
-
-  const message = `
-    <p>
-        Por favor confirme su email haciendo click en el siguiente enlace
-        <a href="${verifyEmail}">Verificar email</a>
-    </p>
-  `;
 
   return sendEmail({
     to: email,
     subject: "Verificar email",
-    html: `Hola ${name}, ${message}`,
+    html: plantilla(name,verifyEmail),
   });
+  }catch(error){
+    console.log(error)
+  }
 };
 
 module.exports = sendVerificationEmail;
