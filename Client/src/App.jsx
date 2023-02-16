@@ -2,7 +2,7 @@ import './App.css'
 import Home from './pages/Routes/Home'
 import Perfil from './pages/Routes/Perfil'
 import Login from './pages/Routes/Login'
-import SignUp from './pages/Routes/Signin'
+import SignUp from './pages/Routes/SignUp'
 import {
   HashRouter,
   Routes,
