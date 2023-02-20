@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "node index.js",
+    "test": "jest --silent --detectOpenHandles --verbose",
     "dev": "nodemon index.js",
     "seed": "node ./seeders/seeders.js"
   },

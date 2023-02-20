@@ -19,19 +19,11 @@ describe("Pruebas a la ruta /register", () => {
   });
   test("Comprobar la información del usuario creado", async () => {
     const { body } = await api.post("/user/register").send(newUser);
-    expect(body.body.result.email).toEqual(newUser.email);
+    expect(body.body.user.email).toEqual(newUser.email);
   });
 });
 
 describe("Pruebas para la ruta /login", () => {
-  const newUser = {
-    fristName: "nemesio",
-    lastName: "camacho",
-    email: "nemesio@gmail.com",
-    phone: "1234567891",
-    password: "1234",
-    password2: "1234",
-  };
   const credentials = {
     email: "nemesio@gmail.com",
     password: "1234",
@@ -41,7 +33,6 @@ describe("Pruebas para la ruta /login", () => {
     password: "1235",
   };
   test("Probar que un post a /login con credenciales correctas retorna un status 200", async () => {
-    await api.post("/user/register").send(newUser);
     await api
       .post("/user/login")
       .send(credentials)
@@ -50,7 +41,6 @@ describe("Pruebas para la ruta /login", () => {
   });
   test("Probar que un post a /login con credenciales incorrectas retorna un status 401", async () => {
     await api.post("/user/login").send(fakeCredentials).expect(401);
-    Users.destroy({ where: { email: newUser.email } });
   });
 });
 
@@ -99,9 +89,9 @@ describe("Pruebas a la ruta /edit/:id", () => {
   });
 });
 describe("Pruebas a la ruta /delete/:id", () => {
-  test("Probar que un delete a /user/delete/2 retorna un status 200", async () => {
+  test("Probar que un delete a /user/delete/1 retorna un status 200", async () => {
     await api
-      .delete("/user/delete/2")
+      .delete("/user/delete/1")
       .expect(200)
       .expect("Content-Type", /application\/json/);
   });
@@ -113,11 +103,11 @@ afterAll(async () => {
     },
   });
   await Users.create({
-    id: 2,
-    fristName: "Juventina",
-    lastName: "Balceiro",
-    email: "balceirojuventina@gmail.com",
-    phone: "1234567810",
+    id: 1,
+    fristName: "Anselmo",
+    lastName: "Riquelme",
+    email: "anselmoriquelme@gmail.com",
+    phone: "1234567890",
     password: "1234",
     password2: "1234"
   });

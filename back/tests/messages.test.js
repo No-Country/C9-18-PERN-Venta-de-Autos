@@ -53,8 +53,8 @@ describe("Pruebas a la ruta /chat/:id", () => {
   })
 });
 
-afterAll(async () => {
-    await Messages.destroy({
-        where: {car_id: 1}
-    })
-})
+// afterAll(async () => {
+//     await Messages.destroy({
+//         where: {car_id: 1}
+//     })
+// })
