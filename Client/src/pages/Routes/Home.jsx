@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Home.css"
 import pickup from "../../assets/svg/4x4.svg";
 import hatchback from "../../assets/svg/hatchback.svg";
 import sedan from "../../assets/svg/sedan.svg";

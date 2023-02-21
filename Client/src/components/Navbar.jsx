@@ -1,35 +1,13 @@
 import React from 'react';
-import svgs from '../assets/svg/svgs';
+import "./Navbar.css"
 
 const Navbar = () => {
   return (
-    <>
-
-      <nav className='navbar' style={{ background: '#3A9EFD' }}>
-        <div className='container-fluid d-flex justify-content-around'>
-
-          <div className='row'>
-            <div className="col mx-5 text-center">
-              <div><h3 className='fw-bold'>AUTOSUSADOS.COM</h3></div>
-            </div>
-
-            <div className="col mx-5 text-center">
-              <div>
-                <input type="text" className='rounded' style={{ width: "30vw", height: "6vh", border: '2px solid #f0f0f0' }} />
-              </div>
-            </div>
-
-            <div className="col mx-5 text-center ">
-              <div className='my-auto d-block'>
-                <h4><a>Login </a>/ <a> Register</a> </h4>
-              </div>
-            </div>
-          </div>
-          <div>
-          </div>
-        </div>
-      </nav>
-    </>
+    <nav>
+      <p className='NavBar-Name'>AUTOSUSADOS.COM</p>
+      <input type="search" name="" id="searchBar" />
+      <p><a href="">Login</a> / <a href="">Register</a></p>
+    </nav>
   );
 };
 

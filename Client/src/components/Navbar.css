@@ -1,0 +1,17 @@
+nav{
+  height: 75px;
+  background-color: #3A9EFD;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.NavBar-Name{
+  font-size: 24px;
+  font-weight: 600;
+}
+
+#searchBar{
+  width: 580px;
+  border-radius: 250px;
+}
