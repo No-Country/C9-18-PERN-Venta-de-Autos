@@ -66,6 +66,7 @@ module.exports = {
       endpointResponse({
         res,
         message: "Vehicle updated successfully",
+        body: result,
         code: 200
       })
     } catch (error) {

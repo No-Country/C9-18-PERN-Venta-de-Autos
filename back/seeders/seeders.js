@@ -22,7 +22,7 @@ const cars = [
     type: "coupe",
     fuel: "petrol",
     images:
-      "https://picolio.auto123.com/auto123-media/articles/2020/12/67715/Toyota-GR-Supra-30-2021%20(17)fr.jpg?crop=0,682,2998,999&amp;scaledown=1024",
+      ["https://picolio.auto123.com/auto123-media/articles/2020/12/67715/Toyota-GR-Supra-30-2021%20(17)fr.jpg?crop=0,682,2998,999&amp;scaledown=1024"],
   },
   {
     year: 1974,
@@ -40,7 +40,7 @@ const cars = [
     type: "sedan",
     fuel: "petrol",
     images:
-      "https://prod.pictures.autoscout24.net/listing-images/ffff4463-9f23-4666-8cdd-6174a19a441d_d7da58eb-d3c2-45cf-b532-b276071e7884.jpg/250x188.webp",
+      ["https://prod.pictures.autoscout24.net/listing-images/ffff4463-9f23-4666-8cdd-6174a19a441d_d7da58eb-d3c2-45cf-b532-b276071e7884.jpg/250x188.webp"],
   },
   {
     year: 2007,
@@ -58,7 +58,7 @@ const cars = [
     type: "hatchback",
     fuel: "petrol",
     images:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Peugeot_206_Quicksilver_90.jpg/1200px-Peugeot_206_Quicksilver_90.jpg",
+      ["https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Peugeot_206_Quicksilver_90.jpg/1200px-Peugeot_206_Quicksilver_90.jpg"],
   },
   {
     year: 2018,
@@ -76,7 +76,7 @@ const cars = [
     type: "sedan",
     fuel: "petrol",
     images:
-      "https://http2.mlstatic.com/D_NQ_NP_832734-MCO53430939251_012023-W.jpg",
+      ["https://http2.mlstatic.com/D_NQ_NP_832734-MCO53430939251_012023-W.jpg"],
   },
   {
     year: 2022,
@@ -94,7 +94,7 @@ const cars = [
     type: "sedan",
     fuel: "petrol",
     images:
-      "https://i.pinimg.com/originals/1c/05/80/1c0580c8abc3a133e5901961194bbf63.jpg",
+      ["https://i.pinimg.com/originals/1c/05/80/1c0580c8abc3a133e5901961194bbf63.jpg"],
   },
   {
     year: 2022,
@@ -111,7 +111,7 @@ const cars = [
     seller_id: 1,
     type: "sedan",
     fuel: "petrol",
-    images: "https://i.ytimg.com/vi/jgovxK1f_0s/maxresdefault.jpg",
+    images: ["https://i.ytimg.com/vi/jgovxK1f_0s/maxresdefault.jpg"],
   },
   {
     year: 2013,
@@ -129,7 +129,7 @@ const cars = [
     type: "sedan",
     fuel: "petrol",
     images:
-      "https://img.clasf.co/2020/07/04/Renault-Logan-Expression-1-6-2013-Gris-Estrella-Sedan-Rines-20200704010100.9239270015.jpg",
+      ["https://img.clasf.co/2020/07/04/Renault-Logan-Expression-1-6-2013-Gris-Estrella-Sedan-Rines-20200704010100.9239270015.jpg"],
   },
   {
     year: 2020,
@@ -147,7 +147,7 @@ const cars = [
     type: "pick_up",
     fuel: "diesel",
     images:
-      "https://www.elcarrocolombiano.com/wp-content/uploads/2019/04/20190423-TOYOTA-HILUX-SPECIAL-EDITION-2019-01.jpg",
+      ["https://www.elcarrocolombiano.com/wp-content/uploads/2019/04/20190423-TOYOTA-HILUX-SPECIAL-EDITION-2019-01.jpg"],
   },
   {
     year: 2017,
@@ -165,7 +165,7 @@ const cars = [
     type: "sedan",
     fuel: "petrol",
     images:
-      "https://img.remediosdigitales.com/bd4c67/mitsubishi-lancer-evo-x-final-edition/1366_2000.jpg",
+      ["https://img.remediosdigitales.com/bd4c67/mitsubishi-lancer-evo-x-final-edition/1366_2000.jpg"],
   },
   {
     year: 2004,
@@ -183,7 +183,7 @@ const cars = [
     type: "hatchback",
     fuel: "petrol",
     images:
-      "https://fotos.estaticosmf.com/fotos_jato/E/400/OPEL/CORSA/2002/5HA.JPG",
+      ["https://fotos.estaticosmf.com/fotos_jato/E/400/OPEL/CORSA/2002/5HA.JPG"],
   },
   {
     year: 2002,
@@ -201,7 +201,7 @@ const cars = [
     type: "hatchback",
     fuel: "petrol",
     images:
-      "https://rodaticarros.com.co/images/listings/2022-09/0699d892-1662034945-957.jpg",
+      ["https://rodaticarros.com.co/images/listings/2022-09/0699d892-1662034945-957.jpg"],
   },
 ];
 

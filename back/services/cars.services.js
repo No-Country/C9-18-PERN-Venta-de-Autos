@@ -32,10 +32,19 @@ class CarServices {
     }
     static async updateVehicle(id, newInfo) {
         try {
-            const result = await Cars.update(
-                newInfo, {where: { id }}
-            );
-            return result;
+            try {
+                const car = await Cars.findOne({ where: { id } });
+          
+                if (!car) {
+                  throw new Error("Vehículo no encontrado");
+                }
+          
+                await car.update(newInfo);
+          
+                return car;
+              } catch (error) {
+                throw error;
+              }
         } catch (error) {
             throw error;
         }

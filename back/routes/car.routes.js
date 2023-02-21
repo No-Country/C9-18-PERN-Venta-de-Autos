@@ -9,12 +9,12 @@ const {
 
 const router = express.Router();
 
-router.post("/publish", post);
+router.post("/post", post);
 
 router.get("/all", get);
 router.get("/all/:seller_id", getVehiclesBySellerId);
 
-router.patch("/edit/:id", updateVehicles);
+router.put("/edit/:id", updateVehicles);
 
 router.delete("/remove/:id", deleteVehicles);
 

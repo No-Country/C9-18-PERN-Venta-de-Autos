@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, STRING } = require('sequelize');
 const db = require("../utils/database");
 
 const Cars = db.define("cars", {
@@ -112,7 +112,7 @@ const Cars = db.define("cars", {
         allowNull: false,
       },
       images: {
-        type: DataTypes.STRING
+        type: DataTypes.ARRAY(DataTypes.STRING)
       }
 });
 
