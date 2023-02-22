@@ -21,7 +21,7 @@ const Users = db.define('users', {
     unique: true
   },
   phone: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
     unique: true
   },

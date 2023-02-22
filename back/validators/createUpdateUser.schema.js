@@ -37,8 +37,9 @@ const createUpdateUserSchema = {
   phone: {
     exists: { bail: true, errorMessage: "Debe ingresar un telefono" },
     trim: true,
-    isInt: {
+    isLength: {
       errorMessage: "Debe ingresar un telefono valido",
+      options: { min: 10, max: 20 },
     },
   },
   profileImage: {
