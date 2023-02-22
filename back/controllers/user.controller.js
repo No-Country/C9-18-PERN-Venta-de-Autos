@@ -5,19 +5,11 @@ const UserServices = require("../services/users.services");
 const { request } = require("express");
 const { createJwt } = require("../helpers");
 const sendVerificationEmail = require("../utils/sendVerificationEmail");
+const checkPermissions = require("../utils/checkPermissions");
 
-// example of a controller. First call the service, then build the controller method
 module.exports = {
   register: catchAsync(async (req, res, next) => {
     const body = req.body;
-
-    const { email, firstName, lastName, password } = req.body;
-    // Validacion temporal, despues se usara express validator
-    if (!email || !firstName || !lastName || !password) {
-      return next(
-        createHttpError(400, "Por favor ingrese todos los datos necesarios")
-      );
-    }
 
     const [response, created] = await UserServices.registerUser(body);
     if (!created) {
@@ -27,14 +19,14 @@ module.exports = {
     }
 
     const origin = "http://localhost:5000";
-      await sendVerificationEmail({
-        name: response.dataValues.firstName,
-        email: response.dataValues.email,
-        verificationToken: response.dataValues.verificationToken,
-        origin,
-      });
+    await sendVerificationEmail({
+      name: response.dataValues.firstName,
+      email: response.dataValues.email,
+      verificationToken: response.dataValues.verificationToken,
+      origin,
+    });
 
-    const {verificationToken, ...userInfo} = response.dataValues
+    const { verificationToken, ...userInfo } = response.dataValues;
 
     const tokenUser = createJwt({ payload: userInfo });
     endpointResponse({
@@ -45,99 +37,55 @@ module.exports = {
         token: tokenUser,
       },
     });
-
-    // try {
-    //   const body = req.body;
-    //   const result = await UserServices.registerUser(body);
-    //   endpointResponse({
-    //     res,
-    //     message: "User register successfully",
-    //     body: result,
-    //     code: 201,
-    //   });
-    // } catch (error) {
-    //   const httpError = createHttpError(
-    //     error.statusCode,
-    //     `[Error retrieving index] - [index - GET]: ${error.message}`
-    //   );
-    //   next(httpError);
-    // }
   }),
 
   getAll: catchAsync(async (req, res, next) => {
-    try {
-      const result = await UserServices.findUsers();
-      endpointResponse({
-        res,
-        message: "Find users successfully",
-        body: result,
-        code: 200,
-      });
-    } catch (error) {
-      const httpError = createHttpError(
-        error.statusCode,
-        `[Error retrieving index] - [index - GET]: ${error.message}`
-      );
-      next(httpError);
-    }
+    const result = await UserServices.findUsers();
+
+    endpointResponse({
+      res,
+      message: "Find users successfully",
+      body: result,
+      code: 200,
+    });
   }),
 
   getId: catchAsync(async (req = request, res, next) => {
-    try {
-      const { id } = req.params;
-      const result = await UserServices.findUserById(id);
-      endpointResponse({
-        res,
-        message: "Find user by Id successfully",
-        body: result,
-        code: 200,
-      });
-    } catch (error) {
-      const httpError = createHttpError(
-        error.statusCode,
-        `[Error retrieving index] - [index - GET]: ${error.message}`
-      );
-      next(httpError);
-    }
+    const { id } = req.params;
+    const result = await UserServices.findUserById(id);
+
+    checkPermissions(req.user, result.id);
+
+    endpointResponse({
+      res,
+      message: "Find user by Id successfully",
+      body: result,
+      code: 200,
+    });
   }),
 
   update: catchAsync(async (req = request, res, next) => {
-    try {
-      const { id } = req.params;
-      const body = req.body;
-      const result = await UserServices.updateUser(id, body);
-      endpointResponse({
-        res,
-        message: "Update user successfully",
-        body: result,
-        code: 200,
-      });
-    } catch (error) {
-      const httpError = createHttpError(
-        error.statusCode,
-        `[Error retrieving index] - [index - GET]: ${error.message}`
-      );
-      next(httpError);
-    }
+    const { id } = req.params;
+    const body = req.body;
+    const result = await UserServices.updateUser(id, body, req.user);
+
+    endpointResponse({
+      res,
+      message: "Update user successfully",
+      body: result,
+      code: 200,
+    });
   }),
 
   deleteUser: catchAsync(async (req = request, res, next) => {
-    try {
-      const { id } = req.params;
-      const result = await UserServices.deleteUser(id);
-      endpointResponse({
-        res,
-        message: "Delete user successfully",
-        body: result,
-        code: 200,
-      });
-    } catch (error) {
-      const httpError = createHttpError(
-        error.statusCode,
-        `[Error retrieving index] - [index - GET]: ${error.message}`
-      );
-      next(httpError);
-    }
+    const { id } = req.params;
+    const result = await UserServices.deleteUser(id, req.user);
+    endpointResponse({
+      res,
+      message: "Delete user successfully",
+      body: result,
+      code: 200,
+    });
   }),
 
   verifyUser: catchAsync(async (req, res, next) => {
@@ -145,8 +93,14 @@ module.exports = {
 
     const user = await UserServices.findUserByEmail(email);
 
-    if (user.verificationToken !== token)
-      throw new Error("el token no es correcto");
+    if (user.verificationToken !== token) {
+      return next(
+        createHttpError(
+          400,
+          "El token no es correcto, no se pudo verificar el correo"
+        )
+      );
+    }
 
     user.verified = true;
 

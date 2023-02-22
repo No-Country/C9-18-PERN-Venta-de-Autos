@@ -1,9 +1,32 @@
-const express = require('express');
-const { post } = require('../controllers/car.controller');
+const express = require("express");
+const {
+  post,
+  get,
+  getVehiclesBySellerId,
+  updateVehicles,
+  deleteVehicles,
+} = require("../controllers/car.controller");
+const { authenticateUser, dataValidator } = require("../middlewares/");
+const { createUpdateCarSchema } = require("../validators");
 
 const router = express.Router();
 
-// example of a route with index controller get function
-router.post('/publish', post);
+router.post(
+  "/post",
+  [authenticateUser, dataValidator(createUpdateCarSchema)],
+  post
+);
+
+router.get("/all", get);
+
+router.get("/all/:seller_id", getVehiclesBySellerId);
+
+router.put(
+  "/edit/:id",
+  [authenticateUser, dataValidator(createUpdateCarSchema)],
+  updateVehicles
+);
+
+router.delete("/remove/:id", authenticateUser, deleteVehicles);
 
 module.exports = router;

@@ -6,8 +6,8 @@ const authenticateUser = catchAsync(async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    const httpError = createHttpError(401, "No hay un token presente");
-    next(httpError);
+    return next(createHttpError(401, "No hay un token presente"));
+   
   }
 
   const token = authHeader.split(" ")[1];
@@ -16,8 +16,7 @@ const authenticateUser = catchAsync(async (req, res, next) => {
     req.user = { ...payloadDecoded };
     next();
   } catch (error) {
-    const httpError = createHttpError(401, "El token no es valido");
-    next(httpError);
+    next(createHttpError(401, "El token no es valido"));
   }
 });
 

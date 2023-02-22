@@ -4,6 +4,7 @@ const Users = require("../models/users.model");
 const crypto = require("crypto");
 const sendVerificationEmail = require("../utils/sendVerificationEmail");
 const { Op, or } = require("sequelize");
+const checkPermissions = require("../utils/checkPermissions");
 
 class UserServices {
   static async registerUser(body) {
@@ -24,53 +25,6 @@ class UserServices {
     } catch (error) {
       throw error;
     }
-
-    // try {
-    //   const { email, password, password2 } = body;
-
-    //   let user = await Users.findOne({ where: { email } });
-
-    //   if (user) {
-    //     throw new Error("El usuario ya existe");
-    //   }
-
-    //   if (password !== password2) {
-    //     throw new Error("Las contraseñas no coinciden");
-    //   }
-
-    //   const verificationToken = crypto.randomBytes(40).toString("hex");
-
-    //   user = new Users(body);
-    //   // Encriptar password
-    //   user.password = await encryptPassword(password);
-
-    //   user.verificationToken = verificationToken;
-
-    //   await user.save();
-
-    //   const origin = "http://localhost:5000";
-    //   await sendVerificationEmail({
-    //     name: user.firstName,
-    //     email: user.email,
-    //     verificationToken: user.verificationToken,
-    //     origin,
-    //   });
-
-    //   // Generar JWT
-    //   const payload = {
-    //     userId: user.id,
-    //     email: user.email,
-    //     firstName: user.firstName,
-    //   };
-    //   const token = createJwt({ payload });
-    //   return {
-    //     user,
-    //     token,
-    //   };
-    // } catch (error) {
-    //   console.log(error);
-    //   throw error;
-    // }
   }
 
   static async findUsers() {
@@ -117,13 +71,15 @@ class UserServices {
     }
   }
 
-  static async updateUser(id, body) {
+  static async updateUser(id, body, reqUser) {
     try {
       const user = await Users.findOne({ where: { id } });
 
       if (!user) {
         throw new Error("User no encontrado");
       }
+
+      checkPermissions(reqUser, user.id);
 
       await user.update(body);
 
@@ -133,12 +89,15 @@ class UserServices {
     }
   }
 
-  static async deleteUser(id) {
+  static async deleteUser(id, reqUser) {
     try {
       const user = await Users.findOne({ where: { id } });
       if (!user) {
         throw new Error("User no encontrado");
       }
+
+      checkPermissions(reqUser, user.id);
+
       await user.destroy();
 
       return `Usuario ${id} eliminado`;

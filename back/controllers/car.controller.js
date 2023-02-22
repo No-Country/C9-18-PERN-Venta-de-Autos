@@ -1,26 +1,59 @@
-const createHttpError = require('http-errors');
-const { endpointResponse } = require('../helpers/success');
-const { catchAsync } = require('../helpers/catchAsync');
-const CarServices = require('../services/cars.services');
+const createHttpError = require("http-errors");
+const { endpointResponse } = require("../helpers/success");
+const { catchAsync } = require("../helpers/catchAsync");
+const CarServices = require("../services/cars.services");
 
 // example of a controller. First call the service, then build the controller method
 module.exports = {
   post: catchAsync(async (req, res, next) => {
-    try {
-      const newCar = req.body;
-      const result = await CarServices.addVehicle(newCar);
-      endpointResponse({
-        res,
-        message: 'Car added successfully',
-        body: result,
-        code: 201 // en este caso es 201 porque es un post, se debe cambiar según el tipo de petición
-      });
-    } catch (error) {
-      const httpError = createHttpError(
-        error.statusCode,
-        `[Error retrieving index] - [index - GET]: ${error.message}`
-      );
-      next(httpError);
-    }
+    const newCar = req.body;
+    req.body.seller_id = req.user.id;
+    const result = await CarServices.addVehicle(newCar);
+    endpointResponse({
+      res,
+      message: "Car added successfully",
+      body: result,
+      code: 201,
+    });
+  }),
+  get: catchAsync(async (req, res, next) => {
+    const result = await CarServices.getVehicles();
+    endpointResponse({
+      res,
+      message: "Vehicles listed successfully",
+      body: result,
+      code: 200,
+    });
+  }),
+  getVehiclesBySellerId: catchAsync(async (req, res, next) => {
+    const { seller_id } = req.params;
+    const result = await CarServices.getBySellerId(seller_id);
+    endpointResponse({
+      res,
+      message: "Vehicles listed successfully",
+      body: result,
+      code: 200,
+    });
+  }),
+  updateVehicles: catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const newInfo = req.body;
+    const result = await CarServices.updateVehicle(id, newInfo, req.user);
+    endpointResponse({
+      res,
+      message: "Vehicle updated successfully",
+      body: result,
+      code: 200,
+    });
+  }),
+  deleteVehicles: catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const result = await CarServices.deleteCar(id, req.user);
+    endpointResponse({
+      res,
+      message: "Vehicle removed successfully",
+      body: result,
+      code: 200,
+    });
   }),
 };
