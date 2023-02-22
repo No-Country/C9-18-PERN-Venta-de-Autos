@@ -18,7 +18,7 @@ const cars = [
     last_plate: 1,
     city: "Barranquilla",
     price: 200000000,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "coupe",
     fuel: "petrol",
     images:
@@ -36,7 +36,7 @@ const cars = [
     last_plate: 6,
     city: "Ibagué",
     price: 30000000,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "sedan",
     fuel: "petrol",
     images:
@@ -54,7 +54,7 @@ const cars = [
     last_plate: 4,
     city: "Cali",
     price: 18000000,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "hatchback",
     fuel: "petrol",
     images:
@@ -72,7 +72,7 @@ const cars = [
     last_plate: 3,
     city: "Bogotá D. C.",
     price: 45000000,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "sedan",
     fuel: "petrol",
     images:
@@ -90,7 +90,7 @@ const cars = [
     last_plate: 1,
     city: "Medellín",
     price: 222222222,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "sedan",
     fuel: "petrol",
     images:
@@ -108,7 +108,7 @@ const cars = [
     last_plate: 9,
     city: "Cartagena",
     price: 50000000,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "sedan",
     fuel: "petrol",
     images: ["https://i.ytimg.com/vi/jgovxK1f_0s/maxresdefault.jpg"],
@@ -125,7 +125,7 @@ const cars = [
     last_plate: 1,
     city: "Buenos Aires",
     price: 30000000,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "sedan",
     fuel: "petrol",
     images:
@@ -143,7 +143,7 @@ const cars = [
     last_plate: 7,
     city: "Lima",
     price: 148000000,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "pick_up",
     fuel: "diesel",
     images:
@@ -161,7 +161,7 @@ const cars = [
     last_plate: 5,
     city: "Caracas",
     price: 40000000,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "sedan",
     fuel: "petrol",
     images:
@@ -179,7 +179,7 @@ const cars = [
     last_plate: 1,
     city: "Santiago",
     price: 16000000,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "hatchback",
     fuel: "petrol",
     images:
@@ -197,7 +197,7 @@ const cars = [
     last_plate: 2,
     city: "Montevideo",
     price: 27000000,
-    seller_id: 1,
+    seller_id: "28c39fba-2e3f-4efa-b36e-49bfe904d54c",
     type: "hatchback",
     fuel: "petrol",
     images:
@@ -207,7 +207,7 @@ const cars = [
 
 const users = [
   {
-    fristName: "Anselmo",
+    firstName: "Anselmo",
     lastName: "Riquelme",
     email: "anselmoriquelme@gmail.com",
     phone: "1234567890",

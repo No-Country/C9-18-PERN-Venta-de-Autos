@@ -58,7 +58,7 @@ const createUpdateCarSchema = {
     trim: true,
     isLength: {
       errorMessage: "Cantidad de puertas debe tener entre 2 y 20 caracteres",
-      options: { min: 2, max: 20 },
+      options: { min: 1, max: 20 },
     },
   },
   engine_capacity: {
