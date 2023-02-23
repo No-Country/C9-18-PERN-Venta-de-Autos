@@ -18,13 +18,13 @@ module.exports = {
       );
     }
 
-    const origin = "http://localhost:5000";
-    await sendVerificationEmail({
-      name: response.dataValues.firstName,
-      email: response.dataValues.email,
-      verificationToken: response.dataValues.verificationToken,
-      origin,
-    });
+    // const origin = "http://localhost:5000";
+    // await sendVerificationEmail({
+    //   name: response.dataValues.firstName,
+    //   email: response.dataValues.email,
+    //   verificationToken: response.dataValues.verificationToken,
+    //   origin,
+    // });
 
     const { verificationToken, ...userInfo } = response.dataValues;
 
