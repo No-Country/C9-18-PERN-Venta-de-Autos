@@ -4,10 +4,9 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-
-const carsRouter = require('./routes/car.routes');
-const usersRouter = require('./routes/user.routes');
-
+const carsRouter = require("./routes/car.routes");
+const messagesRouter = require("./routes/messages.routes");
+const userRouter = require("./routes/user.routes");
 const config = require('./config/config');
 
 const app = express();
@@ -19,9 +18,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 //app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', carsRouter);
+app.use('/vehicles', carsRouter);
+app.use('/users', userRouter);
+// app.use('/user', userRouter);
+app.use('/messages', messagesRouter);
 
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

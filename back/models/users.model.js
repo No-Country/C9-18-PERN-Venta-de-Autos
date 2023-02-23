@@ -1,38 +1,44 @@
 const db = require('../utils/database');
-const { DataTypes } = require('sequelize');
+const { DataTypes, Sequelize, UUIDV4 } = require('sequelize');
 
 const Users = db.define('users', {
   id: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.UUID,
     primaryKey: true,
-    autoIncrement: true,
-    allowNull: false,
+    defaultValue: UUIDV4
   },
-  fristName: {
+  firstName: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   lastName: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
+    unique: true
   },
   phone: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
+    unique: true
   },
   profileImage: {
     type: DataTypes.STRING,
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: false
   },
+  verificationToken:{
+    type: DataTypes.STRING
+  },
+  verified:{
+    type: DataTypes.BOOLEAN,
+    defaultValue:false
+  }
 });
 
 module.exports = Users;

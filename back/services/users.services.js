@@ -1,38 +1,27 @@
-const { encryptPassword, createJwt } = require('../helpers');
-const Users = require('../models/users.model');
+const { encryptPassword, createJwt } = require("../helpers");
+const { ErrorObject } = require("../helpers/error");
+const Users = require("../models/users.model");
+const crypto = require("crypto");
+const sendVerificationEmail = require("../utils/sendVerificationEmail");
+const { Op, or } = require("sequelize");
+const checkPermissions = require("../utils/checkPermissions");
 
 class UserServices {
   static async registerUser(body) {
     try {
-      const { email, password, password2 } = body;
+      const { email, phone } = body;
 
-      let user = await Users.findOne({ where: { email } });
+      body.password = await encryptPassword(body.password);
+      body.verificationToken = crypto.randomBytes(40).toString("hex");
 
-      if (user) {
-        throw new Error('El usuario ya existe');
-      }
+      const [response, created] = await Users.findOrCreate({
+        where: { [Op.or]: [{ email }, { phone }] },
+        defaults: body,
+      });
 
-      if (password !== password2) {
-        throw new Error('Las contraseñas no coinciden');
-      }
+      delete response.dataValues.password;
 
-      user = new Users(body);
-      // Encriptar password
-      user.password = await encryptPassword(password);
-
-      await user.save();
-
-      // Generar JWT
-      const payload = {
-        userId: user.id,
-        email: user.email,
-        firstName: user.firstName,
-      };
-      const token = createJwt({ payload });
-      return {
-        user,
-        token,
-      };
+      return [response, created];
     } catch (error) {
       throw error;
     }
@@ -41,7 +30,7 @@ class UserServices {
   static async findUsers() {
     try {
       return await Users.findAll({
-        attributes: { exclude: ['password'] },
+        attributes: { exclude: ["password"] },
       });
     } catch (error) {
       throw error;
@@ -54,11 +43,11 @@ class UserServices {
 
       const user = await Users.findOne({
         where: { id },
-        attributes: { exclude: ['password'] },
+        attributes: { exclude: ["password"] },
       });
 
       if (!user) {
-        throw new Error('Usuario no existe');
+        throw new Error("Usuario no existe");
       }
 
       return user;
@@ -67,13 +56,30 @@ class UserServices {
     }
   }
 
-  static async updateUser(id, body) {
+  static async findUserByEmail(email) {
+    try {
+      const user = await Users.findOne({
+        where: { email },
+        attributes: { exclude: ["password"] },
+      });
+
+      if (!user) throw new Error("Usuario no existe");
+
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  static async updateUser(id, body, reqUser) {
     try {
       const user = await Users.findOne({ where: { id } });
 
       if (!user) {
-        throw new Error('User no encontrado');
+        throw new Error("User no encontrado");
       }
+
+      checkPermissions(reqUser, user.id);
 
       await user.update(body);
 
@@ -83,12 +89,15 @@ class UserServices {
     }
   }
 
-  static async deleteUser(id) {
+  static async deleteUser(id, reqUser) {
     try {
       const user = await Users.findOne({ where: { id } });
       if (!user) {
-        throw new Error('User no encontrado');
+        throw new Error("User no encontrado");
       }
+
+      checkPermissions(reqUser, user.id);
+
       await user.destroy();
 
       return `Usuario ${id} eliminado`;

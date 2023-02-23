@@ -19,5 +19,5 @@ module.exports = {
     dialect: 'postgres',
   },
 
-  port: process.env.PORT | 3000, // eslint-disable-line
+  port: process.env.PORT || 3000, // eslint-disable-line
 };
