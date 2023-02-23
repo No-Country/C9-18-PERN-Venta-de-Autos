@@ -13,6 +13,11 @@ nav{
   font-weight: 600;
 }
 
+.navLink-Header{
+  color: black;
+  font-size: 20px;
+}
+
 #searchBar{
   width: 580px;
   border-radius: 250px;

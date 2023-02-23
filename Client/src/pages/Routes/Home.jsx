@@ -1,5 +1,5 @@
-import React from 'react';
-import "./Home.css"
+import React from "react";
+import "./Home.css";
 import pickup from "../../assets/svg/4x4.svg";
 import hatchback from "../../assets/svg/hatchback.svg";
 import sedan from "../../assets/svg/sedan.svg";
@@ -8,70 +8,93 @@ import coupe from "../../assets/svg/coupe.svg";
 import dropdown from "../../assets/imgs/dropdown.png";
 import { useRef, useState, useEffect } from "react";
 
+
 const Home = () => {
 
 
-  const containerRef = useRef();
-	const [isVisible, setIsVisible] = useState(false);
+	function activateSecond() {
+		let backgroundDiv = document.querySelector(".SecondSection-Background");
+		console.log("changing")
+		backgroundDiv.style.width = "150%"
+		backgroundDiv.style.height = "150%"
+	}
 
-	useEffect(() => {
-		const observer = new IntersectionObserver((entries => {
-			const entry = entries[0];
-			console.log(entry);
-		}))
-		observer.observe(containerRef.current)
-	}, [])
+	function createObserver() {
+		let boxElement = document.querySelector(".SecondSection-Background");
+		let options = {
+			root: null,
+			rootMargin: "0px",
+			threshold: 0.1
+		};
+
+		let observer = new IntersectionObserver(handleIntersect, options);
+		observer.observe(boxElement)
+	}
+	
+	window.addEventListener("load", (e) => {
+
+		createObserver();
+	});
 	
 
-  return (
-    <div>
+
+	function handleIntersect(entries, observer){
+		console.log(entries[0].isIntersecting)
+		if (entries[0].isIntersecting) {
+			activateSecond()
+		}
+	}
+
+	return (
+		<div>
 			<div className="Head">
 				<div className="Head-Textcont">
-					<h1>Encontra el vehiculo de tus sueños , con unos KM encima.</h1>
+					<h1>Encontra el vehiculo de tus sueños, con unos KM encima.</h1>
 					<button className="btn Mainbtn">MIRA NUESTRAS MEJORES OFERTAS</button>
 				</div>
 			</div>
 			<div className="SaleSelector-Cont">
 				<div className="SaleSelector">
-				<h3 className="SaleSelector-Title">Busca por el tipo que desees:</h3>
-				<div className="SaleSelector-TypesHolder">
-					<div className="SaleSelector-Type">
-						<img src={sedan} alt="4x4 truck" />
-						<h4>Sedan</h4>
-					</div>
-					<div className="SaleSelector-Type">
-						<img src={suv} alt="4x4 truck" />
-						<h4>SUV</h4>
-					</div>
-					<div className="SaleSelector-Type">
-						<img src={hatchback} alt="4x4 truck" />
-						<h4>Hatchback</h4>
-					</div>
-					<div className="SaleSelector-Type">
-						<img src={coupe} alt="4x4 truck" />
-						<h4>Coupe</h4>
-					</div>
-					<div className="SaleSelector-Type">
-						<img src={pickup} alt="4x4 truck" />
-						<h4>Pick up</h4>
-					</div>
-				</div>
-				<div className="SaleSelector-btm">
-					<div className="SaleSelector-Filters">
-						<div className="SaleSelector-Brands">
-							<p>Seleccione una marca</p>
-							<img className="dropdownImg" src={dropdown} alt="Down arrow" />
+					<h3 className="SaleSelector-Title">Busca por el tipo que desees:</h3>
+					<div className="SaleSelector-TypesHolder">
+						<div className="SaleSelector-Type">
+							<img src={sedan} alt="4x4 truck" />
+							<h4>Sedan</h4>
 						</div>
-						<div className="SaleSelector-Brands">
-							<p>Kilometraje</p>
-							<img className="dropdownImg" src={dropdown} alt="Down arrow" />
+						<div className="SaleSelector-Type">
+							<img src={suv} alt="4x4 truck" />
+							<h4>SUV</h4>
+						</div>
+						<div className="SaleSelector-Type">
+							<img src={hatchback} alt="4x4 truck" />
+							<h4>Hatchback</h4>
+						</div>
+						<div className="SaleSelector-Type">
+							<img src={coupe} alt="4x4 truck" />
+							<h4>Coupe</h4>
+						</div>
+						<div className="SaleSelector-Type">
+							<img src={pickup} alt="4x4 truck" />
+							<h4>Pick up</h4>
 						</div>
 					</div>
-					<button className="btn SaleSelector-Button">Buscar</button>
-				</div>
+					<div className="SaleSelector-btm">
+						<div className="SaleSelector-Filters">
+							<div className="SaleSelector-Brands">
+								<p>Seleccione una marca</p>
+								<img className="dropdownImg" src={dropdown} alt="Down arrow" />
+							</div>
+							<div className="SaleSelector-Brands">
+								<p>Kilometraje</p>
+								<img className="dropdownImg" src={dropdown} alt="Down arrow" />
+							</div>
+						</div>
+						<button className="btn SaleSelector-Button">Buscar</button>
+					</div>
 				</div>
 			</div>
-			<div ref={containerRef} className="SecondSection Section">
+			<div className="SecondSection Section">
+				<div className="SecondSection-Background"></div>
 				<div id="FirstModal" className="PseudoModal">
 					<h3>COMPRA TU USADO DE LA MEJOR MANERA</h3>
 					<ul>
@@ -79,7 +102,7 @@ const Home = () => {
 						<li>Compara precios y modelos distintos</li>
 						<li>Asesorate con nuestro servicio tecnico</li>
 					</ul>
-					<button className="btn PseudoModal-btn">
+					<button onClick={activateSecond} className="btn PseudoModal-btn">
 						MIRA NUESTRAS MEJORES OFERTAS
 					</button>
 				</div>
@@ -98,7 +121,7 @@ const Home = () => {
 				</div>
 			</div>
 		</div>
-  );
+	);
 };
 
 export default Home;

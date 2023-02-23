@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav>
       <p className='NavBar-Name'>AUTOSUSADOS.COM</p>
       <input type="search" name="" id="searchBar" />
-      <p><a href="">Login</a> / <a href="">Register</a></p>
+      <p><a href="" className='navLink navLink-Header'>Login</a> / <a href="" className='navLink navLink-Header'>Register</a></p>
     </nav>
   );
 };

@@ -5,3 +5,12 @@
 	margin: 0;
 	font-family: "Roboto", sans-serif;
 }
+
+.navLink{
+	color: white;
+	text-decoration: none;
+}
+
+.navLink:hover{
+	text-decoration: underline;
+}
