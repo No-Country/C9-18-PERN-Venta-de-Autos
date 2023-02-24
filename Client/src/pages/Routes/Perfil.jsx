@@ -17,7 +17,7 @@ const Perfil = () => {
           <p>Location</p>
         </div>
       </div>
-      <div className="Publicaciones">
+      <div className="Publicaciones PerfilPart">
         <h2>Publicaciones</h2>
         <div className="Publicaciones-Grid">
           <div className='Publicaciones-Item'>
@@ -100,33 +100,35 @@ const Perfil = () => {
           </div>
         </div>
       </div>
-      <div className="Rese">
+      <div className="Rese PerfilPart">
         <h2>Reseñas</h2>
-        <div className="Rese-Item">
-          <div className="Rese-Item-Pic">
-            <img src={placeholderpfp} alt="" />
+        <div className='ReseCont'>
+          <div className="Rese-Item">
+            <div className="Rese-Item-Pic">
+              <img src={placeholderpfp} alt="" />
+            </div>
+            <div className="Rese-Item-Desc">
+              <h3>Usuario</h3>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati numquam provident deserunt iure sint consectetur a necessitatibus. Inventore rerum vel pariatur dolorem! Provident, molestiae tempora necessitatibus delectus quia sapiente laborum?</p>
+            </div>
           </div>
-          <div className="Rese-Item-Desc">
-            <h3>Usuario</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati numquam provident deserunt iure sint consectetur a necessitatibus. Inventore rerum vel pariatur dolorem! Provident, molestiae tempora necessitatibus delectus quia sapiente laborum?</p>
+          <div className="Rese-Item">
+            <div className="Rese-Item-Pic">
+              <img src={placeholderpfp} alt="" />
+            </div>
+            <div className="Rese-Item-Desc">
+              <h3>Usuario</h3>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati numquam provident deserunt iure sint consectetur a necessitatibus. Inventore rerum vel pariatur dolorem! Provident, molestiae tempora necessitatibus delectus quia sapiente laborum?</p>
+            </div>
           </div>
-        </div>
-        <div className="Rese-Item">
-          <div className="Rese-Item-Pic">
-            <img src={placeholderpfp} alt="" />
-          </div>
-          <div className="Rese-Item-Desc">
-            <h3>Usuario</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati numquam provident deserunt iure sint consectetur a necessitatibus. Inventore rerum vel pariatur dolorem! Provident, molestiae tempora necessitatibus delectus quia sapiente laborum?</p>
-          </div>
-        </div>
-        <div className="Rese-Item">
-          <div className="Rese-Item-Pic">
-            <img src={placeholderpfp} alt="" />
-          </div>
-          <div className="Rese-Item-Desc">
-            <h3>Usuario</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati numquam provident deserunt iure sint consectetur a necessitatibus. Inventore rerum vel pariatur dolorem! Provident, molestiae tempora necessitatibus delectus quia sapiente laborum?</p>
+          <div className="Rese-Item">
+            <div className="Rese-Item-Pic">
+              <img src={placeholderpfp} alt="" />
+            </div>
+            <div className="Rese-Item-Desc">
+              <h3>Usuario</h3>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati numquam provident deserunt iure sint consectetur a necessitatibus. Inventore rerum vel pariatur dolorem! Provident, molestiae tempora necessitatibus delectus quia sapiente laborum?</p>
+            </div>
           </div>
         </div>
       </div>

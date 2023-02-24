@@ -1,6 +1,9 @@
 .Perfil {
- height: 100vh;
  padding: 75px 50px;
+}
+
+.PerfilPart{
+ margin-top: 50px;
 }
 
 .ContenedorTop {
@@ -25,6 +28,8 @@
 .Publicaciones-Grid{
  display: flex;
  gap: 20px;
+ margin-top: 25px;
+ overflow-x: scroll;
 }
 
 .Publicaciones-Item{
@@ -58,6 +63,10 @@
 .ItemBtn{
  width: 75%;
  height: 30px;
+}
+
+.ReseCont{
+ margin-top: 25px;
 }
 
 .Rese-Item{
