@@ -24,7 +24,7 @@
 }
 
 .btn:focus {
-  outline: solid 10px white;
+  border: solid 5px white;
 }
 
 .Head {
