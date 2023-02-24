@@ -6,6 +6,7 @@ const carSeed = (sellerIds) => {
   for (let i = 0; i < 50; i++) {
     const createdAt = faker.date.recent();
     const car = {
+      id: faker.datatype.uuid(),
       year: faker.date
         .between("1900-01-01T00:00:00.000Z", "2022-01-01T00:00:00.000Z")
         .getFullYear(),
