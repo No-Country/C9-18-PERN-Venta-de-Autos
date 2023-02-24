@@ -1,12 +1,31 @@
-const { where } = require("sequelize");
+const { where, Op } = require("sequelize");
 const Cars = require("../models/cars.model");
 const Users = require("../models/users.model");
 const checkPermissions = require("../utils/checkPermissions");
 
 class CarServices {
-  static async getVehicles() {
+  static async getVehicles(reqQuery) {
     try {
-      const allCars = await Cars.findAll();
+      let { year, brand, model, km, city, price, type, search } = reqQuery;
+      let allCars;
+
+      if (year || brand || model || km || city || price || type || search) {
+        allCars = await Cars.findAll({
+          where: {
+            [Op.and]: [
+              year ? { year } : null,
+              brand ? { brand } : null,
+              model ? { model } : null,
+              km ? { km } : null,
+              city ? { city } : null,
+              price ? { price } : null,
+              type ? { type } : null,
+            ],
+          },
+        });
+      } else {
+        allCars = await Cars.findAll();
+      }
       return allCars;
     } catch (error) {
       throw error;

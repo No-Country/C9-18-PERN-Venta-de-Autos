@@ -17,7 +17,7 @@ module.exports = {
     });
   }),
   get: catchAsync(async (req, res, next) => {
-    const result = await CarServices.getVehicles();
+    const result = await CarServices.getVehicles(req.query);
     endpointResponse({
       res,
       message: "Vehicles listed successfully",
