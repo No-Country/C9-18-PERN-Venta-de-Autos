@@ -12,6 +12,16 @@ class CarServices {
       throw error;
     }
   }
+
+  static async findVehicleById(id) {
+    try {
+      const result = await Cars.findOne({ where: { id } });
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async getBySellerId(seller_id) {
     try {
       const result = await Cars.findAll({

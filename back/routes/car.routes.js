@@ -5,6 +5,7 @@ const {
   getVehiclesBySellerId,
   updateVehicles,
   deleteVehicles,
+  getVehicleById,
 } = require("../controllers/car.controller");
 const { authenticateUser, dataValidator } = require("../middlewares/");
 const { createUpdateCarSchema } = require("../validators");
@@ -18,6 +19,8 @@ router.post(
 );
 
 router.get("/all", get);
+
+router.get("/:id", getVehicleById);
 
 router.get("/all/:seller_id", getVehiclesBySellerId);
 
