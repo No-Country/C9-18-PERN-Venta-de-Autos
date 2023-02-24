@@ -17,10 +17,27 @@ module.exports = {
     });
   }),
   get: catchAsync(async (req, res, next) => {
-    const result = await CarServices.getVehicles();
+    const result = await CarServices.getVehicles(req.query);
     endpointResponse({
       res,
       message: "Vehicles listed successfully",
+      body: result,
+      code: 200,
+    });
+  }),
+  getVehicleById: catchAsync(async (req, res, next) => {
+    const { id } = req.params;
+    const result = await CarServices.findVehicleById(id);
+
+    if (!result) {
+      return next(
+        createHttpError(404, "No se encontro ningun vehiculo con ese Id")
+      );
+    }
+
+    endpointResponse({
+      res,
+      message: "Se encontro el vehiculo exitosamente!",
       body: result,
       code: 200,
     });
