@@ -42,7 +42,7 @@
     fill: #3C9DFA;
 }
 
-span {
+.spanClass {
     margin-top: 20px;
     text-align: left;
     font-size: 16px;
@@ -74,7 +74,7 @@ span {
     width: 80%;
 }
 
-input {
+.Classinput {
     margin-top: 5px;
     border-radius: 10px;
     height: 30px;
@@ -95,4 +95,9 @@ input {
 
 .contact-map {
     flex: 1;
+}
+
+.itemSVG{
+    height: 150px;
+    width: 150px;
 }
