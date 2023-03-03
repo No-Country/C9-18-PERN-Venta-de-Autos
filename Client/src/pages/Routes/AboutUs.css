@@ -79,6 +79,7 @@ input {
     border-radius: 10px;
     height: 30px;
     border: 1px solid lightgray;
+    padding-left: 10px;
 }
 
 .form-button {
