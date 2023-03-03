@@ -4,7 +4,7 @@ import Perfil from './pages/Routes/Perfil'
 import Login from './pages/Routes/Login'
 import SignUp from './pages/Routes/Signin'
 import Search from './pages/Routes/Search'
-import AboutUs from './pages/Routes/Aboutus'
+import AboutUs from './pages/Routes/AboutUs'
 import {
   HashRouter,
   Routes,
