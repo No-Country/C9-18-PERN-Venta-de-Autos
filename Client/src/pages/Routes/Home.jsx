@@ -7,6 +7,8 @@ import suv from "../../assets/svg/suv.svg";
 import coupe from "../../assets/svg/coupe.svg";
 import dropdown from "../../assets/imgs/dropdown.png";
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 
 
 const Home = () => {
@@ -15,8 +17,9 @@ const Home = () => {
 	function activateSecond() {
 		let backgroundDiv = document.querySelector(".SecondSection-Background");
 		console.log("changing")
-		backgroundDiv.style.width = "150%"
-		backgroundDiv.style.height = "150%"
+		backgroundDiv.style.width = "100%"
+		backgroundDiv.style.height = "inherit"
+		backgroundDiv.style.backgroundSize = "200%"
 	}
 
 	function createObserver() {
@@ -30,15 +33,15 @@ const Home = () => {
 		let observer = new IntersectionObserver(handleIntersect, options);
 		observer.observe(boxElement)
 	}
-	
+
 	window.addEventListener("load", (e) => {
 
 		createObserver();
 	});
-	
 
 
-	function handleIntersect(entries, observer){
+
+	function handleIntersect(entries, observer) {
 		console.log(entries[0].isIntersecting)
 		if (entries[0].isIntersecting) {
 			activateSecond()
@@ -50,7 +53,10 @@ const Home = () => {
 			<div className="Head">
 				<div className="Head-Textcont">
 					<h1>Encontra el vehiculo de tus sueños, con unos KM encima.</h1>
-					<button className="btn Mainbtn">MIRA NUESTRAS MEJORES OFERTAS</button>
+					<Link to="search">
+
+						<button className="btn Mainbtn">MIRA NUESTRAS MEJORES OFERTAS</button>
+					</Link>
 				</div>
 			</div>
 			<div className="SaleSelector-Cont">
@@ -108,6 +114,7 @@ const Home = () => {
 				</div>
 			</div>
 			<div className="ThirdSection Section">
+				<div className="ThirdSection-Background"></div>
 				<div id="SecondModal" className="PseudoModal">
 					<h3>PUBLICA TU AUTO CON NOSTROS</h3>
 					<ul>

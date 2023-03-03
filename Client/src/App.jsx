@@ -3,6 +3,8 @@ import Home from './pages/Routes/Home'
 import Perfil from './pages/Routes/Perfil'
 import Login from './pages/Routes/Login'
 import SignUp from './pages/Routes/Signin'
+import Search from './pages/Routes/Search'
+import AboutUs from './pages/Routes/Aboutus'
 import {
   HashRouter,
   Routes,
@@ -28,6 +30,8 @@ function App() {
             <Route element={<ProtectedRoutes />}>
               {/* Las rutas en las que deba aparecer Navbar y Footer iran aca dentro */}
               <Route path="/perfil" element={<Perfil />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/aboutus" element={<AboutUs />} />
               
             </Route>
           </Route>
