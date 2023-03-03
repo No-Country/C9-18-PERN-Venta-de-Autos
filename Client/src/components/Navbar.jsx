@@ -1,23 +1,13 @@
 import React from 'react';
-import svgs from '../assets/svg/svgs';
+import "./Navbar.css"
 
 const Navbar = () => {
   return (
-    <>
-      <nav className='Navbar'>
-        <div><ul>
-          <li>Catalogo</li>
-          <li>Comprar</li>
-          <li>Vender</li>
-        </ul></div>
-        <div><h1>LOGO NAME</h1></div>
-        <div>
-          <ul>
-            <li><img className='login-svg svg' src={svgs.userLog} alt="icono de iniciar sesión" /></li>
-          </ul>
-        </div>
-      </nav>
-    </>
+    <nav>
+      <p className='NavBar-Name'>AUTOSUSADOS.COM</p>
+      <input type="search" name="" id="searchBar" />
+      <p><a href="" className='navLink navLink-Header'>Login</a> / <a href="" className='navLink navLink-Header'>Register</a></p>
+    </nav>
   );
 };
 

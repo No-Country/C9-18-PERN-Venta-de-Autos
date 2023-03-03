@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import svgs from '../../assets/svg/svgs';
+import "./Login.css"
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom'
 
