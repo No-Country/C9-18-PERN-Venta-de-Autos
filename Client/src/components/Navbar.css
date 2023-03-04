@@ -8,6 +8,15 @@ nav{
   position: absolute;
 }
 
+.HomeLink{
+  text-decoration: none;
+}
+
+.HomeLink:visited{
+  color: white;
+  text-decoration: none;
+}
+
 .NavBar-Name{
   font-size: 24px;
   font-weight: 600;
@@ -21,4 +30,8 @@ nav{
 #searchBar{
   width: 580px;
   border-radius: 250px;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 10px 20px;
+  font-size: 25px;
 }

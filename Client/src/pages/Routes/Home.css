@@ -140,6 +140,7 @@
 
 .Section {
   height: 1300px;
+  margin: 25px 0px;
   display: flex;
   align-items: center;
   background-repeat: no-repeat;
@@ -150,13 +151,9 @@
 
 .SecondSection-Background {
   background-image: url("../../assets/imgs/firstpart.jpg");
-  background-size: 80%;
-  width: 80%;
-  height: 70%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  position: absolute;
-  transition: 5s;
 }
 
 .SecondSection-Background.active {

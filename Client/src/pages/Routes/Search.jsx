@@ -1,4 +1,5 @@
 import "./Search.css"
+import { Link } from "react-router-dom"
 import React, { useState, useEffect } from 'react';
 
 
@@ -64,7 +65,9 @@ function Search() {
         <div class="Results-Card-Tag"><p>${element.type}</p></div>
         <div class="Results-Card-Tag"><p>${element.year}</p></div>
         </div>
+        <a href="#/post">
         <button class="btn Results-Card-Button">Ver publicacion</button>
+        </a>
       </div>
       </div>
    `

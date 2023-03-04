@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SignUp = () => {
+const Register = () => {
   return (
     <div>
       <h1>Sign up</h1>
@@ -8,4 +8,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Register;

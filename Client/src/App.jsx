@@ -2,7 +2,7 @@ import './App.css'
 import Home from './pages/Routes/Home'
 import Perfil from './pages/Routes/Perfil'
 import Login from './pages/Routes/Login'
-import SignUp from './pages/Routes/SignUp'
+import Register from './pages/Routes/Register'
 import Search from './pages/Routes/Search'
 import AboutUs from './pages/Routes/AboutUs'
 import Post from './pages/Routes/Post'
@@ -22,7 +22,7 @@ function App() {
         <Routes >
         {/* Las rutas que no deban tener Navbar y Footer deberan declararse aca */}
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/register" element={<Register />} />
 
 
           <Route element={< MainLayout />}>
